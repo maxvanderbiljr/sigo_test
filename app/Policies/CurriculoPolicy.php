@@ -9,7 +9,7 @@ use Illuminate\Auth\Access\Response;
 class CurriculoPolicy
 {
     /**
-     * Determine whether the user can view any models.
+     * listar todos os currículos.
      */
     public function viewAny(User $user): bool
     {
@@ -17,63 +17,65 @@ class CurriculoPolicy
     }
 
     /**
-     * Determine whether the user can view the model.
+     * visualizar um currículo específico.
      */
     public function view(User $user, Curriculo $curriculo): bool
     {
-       return $user->isAdmin() ||  $user->isCoordenador() || $user->isOrientador();
+       return $user->isAdmin() || $user->isCoordenador() || ($user->isOrientador() && $curriculo->user_id === $user->id);
     }
 
     /**
-     * Determine whether the user can create models.
+     * criar um novo currículo.
      */
-    public function create(User $user, Curriculo $curriculo): bool
+    public function create(User $user): bool
     {
-        return $user->isAdmin() ||  $user->isCoordenador() || $user->isOrientador();
+        return $user->isOrientador();
     }
 
     /**
-     * Determine whether the user can update the model.
+     * editar um currículo existente.
      */
     public function update(User $user, Curriculo $curriculo): bool
     {
-        return $user->isAdmin() ||  $user->isCoordenador() || $user->isOrientador();
+        return $user->isAdmin() 
+        || $user->isCoordenador() 
+        || ($user->isOrientador() && $curriculo->user_id === $user->id);
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * excluir um currículo existente.
      */
     public function delete(User $user, Curriculo $curriculo): bool
     {
-        return $user->isOrientador();
+        return $user->isAdmin() ||  $user->isCoordenador();
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * restaurar um currículo (soft delete)
      */
     public function restore(User $user, Curriculo $curriculo): bool
     {
-        return $user->isOrientador();
+        return $user->isAdmin() ||  $user->isCoordenador();
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * exclusão permanente de um currículo
      */
     public function forceDelete(User $user, Curriculo $curriculo): bool
     {
-        return $user->isOrientador();
+        return $user->isAdmin() ||  $user->isCoordenador();
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * exclusão em massa de currículos
      */
     public function deleteAny(User $user): bool
     {
-        return $user->isOrientador();
+        return $user->isAdmin();
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * restauração em massa de currículos
      */
     public function restoreAny(User $user): bool
     {
@@ -81,10 +83,10 @@ class CurriculoPolicy
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * exclusão permanente em massa de currículos
      */
     public function forceDeleteAny(User $user): bool
     {
-        $user->isOrientador();
+        return $user->isAdmin();
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Auth\Access\Response;
 class CursoPolicy
 {
     /**
-     * Determine whether the user can view any models.
+     *  Listar todos os Cursos
      */
     public function viewAny(User $user): bool
     {
@@ -18,7 +18,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can view the model.
+     * Visualizar um curso específico.
      */
     public function view(User $user, Curso $curso): bool
     {
@@ -26,7 +26,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can create models.
+     * Criar um novo curso.
      */
     public function create(User $user): bool
     {
@@ -34,7 +34,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can update the model.
+     * Editar um curso existente.
      */
     public function update(User $user, Curso $curso): bool
     {
@@ -42,7 +42,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can delete the model.
+     * Excluir um curso existente.
      */
     public function delete(User $user, Curso $curso): bool
     {
@@ -50,7 +50,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Restaurar um curso (soft delete)
      */
     public function restore(User $user, Curso $curso): bool
     {
@@ -58,7 +58,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Exclusão permanente de um curso
      */
     public function forceDelete(User $user, Curso $curso): bool
     {
@@ -66,7 +66,7 @@ class CursoPolicy
     }
 
  /**
-     * Determine whether the user can delete the model.
+     * Exclusão em massa de cursos
      */
     public function deleteAny(User $user): bool
     {
@@ -74,7 +74,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can restore the model.
+     * Restauração em massa de cursos
      */
     public function restoreAny(User $user): bool
     {
@@ -82,7 +82,7 @@ class CursoPolicy
     }
 
     /**
-     * Determine whether the user can permanently delete the model.
+     * Exclusão permanente em massa de cursos
      */
     public function forceDeleteAny(User $user): bool
     {

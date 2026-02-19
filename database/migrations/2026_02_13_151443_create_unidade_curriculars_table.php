@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('unidade_curriculars', function (Blueprint $table) {
             $table->id();
-            $table->unidade_operativa_id();
-            $table->foreignId('unidade_operativa_id')->constrained()->onDelete('cascade');       
+            $table->foreignId('unidade_operativa_id')->constrained()->onDelete('cascade');
             $table->string('codigo', 20)->unique();
-            $table->string('unidade_operativa');
             $table->string('nome', 300);
             $table->text('descricao')->nullable();
             $table->integer('carga_horaria')->nullable();

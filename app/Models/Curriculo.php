@@ -9,6 +9,7 @@ class Curriculo extends Model
     //fillable
     protected $fillable = [
         'apresentacao',
+        'qualificacao_profissional',
         'objetivo',
         'foto_perfil',      
         'linkedin',

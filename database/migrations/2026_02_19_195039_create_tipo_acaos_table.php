@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('curriculos', function (Blueprint $table) {
+        Schema::create('tipo_acaos', function (Blueprint $table) {
             $table->id();
-            //$table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->text('apresentacao');
-            $table->text('objetivo');
-            $table->string('foto_perfil', 255);
-            $table->string('linkedin', 255);
-            $table->string('status');
-
             $table->timestamps();
         });
     }
@@ -29,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('curriculos');
+        Schema::dropIfExists('tipo_acaos');
     }
 };
