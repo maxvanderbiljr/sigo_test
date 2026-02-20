@@ -8,11 +8,11 @@ class UnidadeCurricular extends Model
 {
     //fillable
     protected $fillable = [
-        'codigo',
-        'unidade_operativa',
+        'unidade_operativa_id',
         'nome',
-        'descricao',        
+        'codigo',
         'carga_horaria',
+        'descricao',        
         'competencias',
         'habilidades',
         'atitudes_valores',
@@ -20,5 +20,20 @@ class UnidadeCurricular extends Model
         'bibliografia', 
         'ativo',
     ];
+
+    // ==========================================
+    // RELACIONAMENTOS - belongsTo
+    // ==========================================   
+
+    public function unidadeOperativa()
+    {
+        return $this->belongsTo(UnidadeOperativa::class);
+    }
+
+    public function cursos()
+    {
+        return $this->belongsToMany(Curso::class, 'curso_unidade_curricular');
+    }
+    
 
 }

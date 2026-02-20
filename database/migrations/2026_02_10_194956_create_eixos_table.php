@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('eixos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome'); // Tipo de string para o nome do eixo
             $table->timestamps();
         });
     }

@@ -15,18 +15,79 @@ class CursoForm
         return $schema
             ->components([
                 TextInput::make('nome')
-                    ->required(),
-                Textarea::make('descricao')
+                    ->label('Nome do Curso')
+                    ->required()
                     ->columnSpanFull(),
+                
+                Textarea::make('descricao')
+                    ->label('Descrição')
+                    ->columnSpanFull(),
+                
                 TextInput::make('carga_horaria')
+                    ->label('Carga Horária')        
                     ->numeric(),
-                TextInput::make('preco')
-                    ->numeric(),
+                
+                Select::make('unidade_curricular_id')
+                    ->label('Unidade Curricular')   
+                    ->relationship('unidadeCurriculares', 'nome')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
+                    ->required(),
+                
+                Select::make('segmento_id') 
+                    ->label('Segmento')
+                    ->relationship(name:'segmento', titleAttribute:'nome')
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    ->createOptionForm([
+                    TextInput::make('nome')
+                        ->label('Nome do Segmento')
+                        ->required(),
+                ]),
+
+                Select::make('eixo_id')
+                    ->label('Eixo')     
+                    ->relationship(name:'eixo', titleAttribute:'nome')
+                    ->searchable()
+                    ->required()
+                    ->createOptionForm([
+                    TextInput::make('nome')
+                        ->label('Nome do Eixo')
+                        ->required(),
+                ]),
+
+                Select::make('modalidade_id')
+                    ->label('Modalidade')       
+                    ->relationship(name:'modalidade', titleAttribute:'nome')
+                    ->searchable()
+                    ->required()
+                    ->createOptionForm([
+                    TextInput::make('nome')
+                        ->label('Nome da Modalidade')
+                        ->required(),
+                ]),
+
+                Select::make('tipo_acao_id')
+                    ->label('Tipo de Ação')
+                    ->relationship(name:'tipoAcao', titleAttribute:'nome')
+                    ->searchable()
+                    ->required()
+                    ->createOptionForm([
+                    TextInput::make('nome')
+                        ->label('Nome do Tipo de Ação')
+                        ->required(),
+                ]),
+
                 Select::make('nivel')
+                    ->label('Nível')
                     ->options(['basico' => 'Basico', 'intermediario' => 'Intermediario', 'avancado' => 'Avancado'])
                     ->default('basico')
                     ->required(),
+                
                 Toggle::make('ativo')
+                    ->label('Ativo')    
                     ->required(),
             ]);
     }

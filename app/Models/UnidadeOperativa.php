@@ -20,4 +20,15 @@ class UnidadeOperativa extends Model
         'responsavel',
         'ativo',
     ];
+
+    // ==========================================
+    // RELACIONAMENTOS - hasMany
+    // ==========================================
+
+    public function unidadesCurriculares()
+    {
+        return $this->hasMany(UnidadeCurricular::class);
+    }
+
+    
 }

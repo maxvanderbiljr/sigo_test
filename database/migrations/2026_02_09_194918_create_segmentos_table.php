@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modalidades', function (Blueprint $table) {
+        Schema::create('segmentos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome'); // Tipo de string para o nome do segmento
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modalidades');
+        Schema::dropIfExists('segmentos');
     }
 };

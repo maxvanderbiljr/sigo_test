@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carga_horarias', function (Blueprint $table) {
+        Schema::create('tipo_acaos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome'); // Tipo de string para o nome do tipo de ação
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carga_horarias');
+        Schema::dropIfExists('tipo_acaos');
     }
 };

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 200);
             $table->string('sigla', 20);
-            $table->string('cnpj', 18);
+            $table->string('cnpj', 20);
             $table->string('endereco', 300);
             $table->string('cidade', 100);
-            $table->char('estado', 2);
+            $table->string('estado', 100);
             $table->string('cep', 9);
             $table->string('telefone', 20);
             $table->string('email', 200);

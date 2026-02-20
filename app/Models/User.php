@@ -73,4 +73,5 @@ class User extends Authenticatable implements FilamentUser
         // Permite acesso se o usuário estiver ativo e tiver pelo menos um perfil
         return $this->ativo && !empty($this->perfis);
     }
+
 }

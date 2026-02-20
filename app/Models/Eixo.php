@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Eixo extends Model
 {
-    //
+    
+    //Fllable para permitir a atribuição em massa dos campos
+    protected $fillable = [
+        'nome',
+    ];
+    // ==========================================
+    // RELACIONAMENTOS - hasMany
+    // ==========================================
+    
+    public function cursos()
+    {
+        return $this->hasMany(Curso::class);
+    }    
+
 }

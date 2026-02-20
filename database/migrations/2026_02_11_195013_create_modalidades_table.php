@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_acaos', function (Blueprint $table) {
+        Schema::create('modalidades', function (Blueprint $table) {
             $table->id();
+            $table->string('nome'); // Tipo de string para o nome da modalidade
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_acaos');
+        Schema::dropIfExists('modalidades');
     }
 };
