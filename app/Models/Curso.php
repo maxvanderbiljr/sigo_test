@@ -20,7 +20,8 @@ class Curso extends Model
         'descricao',
         'requisitos',
         'objetivo',
-        'ativo',
+        'status',
+        'nivel',
     ];
 
     // ==========================================

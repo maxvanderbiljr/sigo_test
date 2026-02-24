@@ -23,20 +23,8 @@ class UnidadeOperativasTable
                 TextColumn::make('cnpj')
                     ->searchable(),
                 TextColumn::make('endereco')
-                    ->searchable(),
-                TextColumn::make('cidade')
-                    ->searchable(),
-                TextColumn::make('estado')
-                    ->searchable(),
-                TextColumn::make('cep')
-                    ->searchable(),
-                TextColumn::make('telefone')
-                    ->searchable(),
-                TextColumn::make('email')
-                    ->label('Email address')
-                    ->searchable(),
-                TextColumn::make('responsavel')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 IconColumn::make('ativo')
                     ->boolean(),
                 TextColumn::make('created_at')

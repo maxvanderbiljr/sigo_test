@@ -30,9 +30,10 @@ return new class extends Migration
             $table->longText('descricao')->nullable();
             $table->text('requisitos')->nullable();
             $table->text('objetivo')->nullable();
+            $table->text('nivel')->nullable();
             
             // Status e Timestamps
-            $table->tinyInteger('ativo')->default(1);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps(); // Cria created_at e updated_at
             $table->softDeletes(); // Cria deleted_at
         });

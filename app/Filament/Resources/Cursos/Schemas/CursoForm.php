@@ -82,7 +82,7 @@ class CursoForm
 
                 Select::make('nivel')
                     ->label('Nível')
-                    ->options(['basico' => 'Basico', 'intermediario' => 'Intermediario', 'avancado' => 'Avancado'])
+                    ->options(['basico' => 'Básico', 'intermediario' => 'Intermediário', 'avancado' => 'Avançado'])
                     ->default('basico')
                     ->required(),
                 

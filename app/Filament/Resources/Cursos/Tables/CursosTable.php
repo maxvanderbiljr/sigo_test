@@ -21,9 +21,6 @@ class CursosTable
                 TextColumn::make('carga_horaria')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('preco')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('nivel')
                     ->badge(),
                 IconColumn::make('ativo')

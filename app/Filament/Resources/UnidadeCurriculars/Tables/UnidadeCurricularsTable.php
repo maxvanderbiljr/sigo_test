@@ -16,9 +16,6 @@ class UnidadeCurricularsTable
     {
         return $table
             ->columns([
-                TextColumn::make('unidade_operativa_id')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('codigo')
                     ->searchable(),
                 TextColumn::make('nome')

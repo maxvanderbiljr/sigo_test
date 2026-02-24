@@ -12,25 +12,30 @@ class CursoInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('nome'),
+                TextEntry::make('nome')
+                ->label('Nome do Curso:'),
+                
                 TextEntry::make('descricao')
+                    ->label('Descrição')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('carga_horaria')
-                    ->numeric()
-                    ->placeholder('-'),
-                TextEntry::make('preco')
+                    ->label('Carga Horária:')    
                     ->numeric()
                     ->placeholder('-'),
                 TextEntry::make('nivel')
+                    ->label('Nível:')
                     ->badge(),
                 IconEntry::make('ativo')
+                    ->label('Status:')
                     ->boolean(),
                 TextEntry::make('created_at')
-                    ->dateTime()
-                    ->placeholder('-'),
+                    ->label('Criado em:')
+                    ->formatStateUsing(fn ($state) => $state ? $state->locale('pt_BR')->translatedFormat('d/m/Y H:i') : '-')
+                    ->placeholder('-'), 
                 TextEntry::make('updated_at')
-                    ->dateTime()
+                    ->label('Atualizado em:')
+                    ->formatStateUsing(fn ($state) => $state ? $state->locale('pt_BR')->translatedFormat('d/m/Y H:i') : '-')
                     ->placeholder('-'),
             ]);
     }
