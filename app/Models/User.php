@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -53,25 +54,27 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-    public function isAdmin(): bool
-    {
-        return in_array('admin', $this->perfis ?? []);
-    }
-
-    public function isCoordenador(): bool
-    {
-        return in_array('coordenador', $this->perfis ?? []);
-    }
-
-    public function isOrientador(): bool
-    {
-        return in_array('orientador', $this->perfis ?? []);
-    }
-
     public function canAccessPanel(Panel $panel): bool
     {
-        // Permite acesso se o usuário estiver ativo e tiver pelo menos um perfil
-        return $this->ativo && !empty($this->perfis);
+        // Permite acesso ao painel apenas para usuários ativos com perfil 'admin' ou 'coordenador' ou 'orientador'
+        return $this->ativo && ($this->isAdmin() || $this->isCoordenador() || $this->isOrientador());
     }
+
+// User tem um Currículo (apenas orientadores terão)
+public function curriculo(): HasOne
+{
+    return $this->hasOne(Curriculo::class);
+}
+
+// Helper para verificar perfis (seu campo JSON)
+public function hasPerfil(string $perfil): bool
+{
+    $perfis = $this->perfis ?? [];
+    return in_array($perfil, $perfis);
+}
+
+public function isAdmin(): bool       { return $this->hasPerfil('admin'); }
+public function isCoordenador(): bool { return $this->hasPerfil('coordenador'); }
+public function isOrientador(): bool  { return $this->hasPerfil('orientador'); }
 
 }

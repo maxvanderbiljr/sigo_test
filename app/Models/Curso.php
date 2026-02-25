@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//Aqui estamos usando o SoftDeletes para permitir a exclusão lógica dos cursos, ou seja, eles não serão removidos fisicamente do banco de dados, mas sim marcados como excluídos.
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Curso extends Model
 {
     use SoftDeletes;
-    //fillable para permitir a atribuição em massa dos campos
+
     protected $fillable = [
         'nome',
         'carga_horaria',
@@ -20,36 +21,36 @@ class Curso extends Model
         'descricao',
         'requisitos',
         'objetivo',
-        'status',
         'nivel',
+        'status',
     ];
 
-    // ==========================================
-    // RELACIONAMENTOS - belongsTo
-    // ==========================================
-
-    public function segmento()
+    public function segmento(): BelongsTo
     {
         return $this->belongsTo(Segmento::class);
     }
 
-    public function eixo()
+    public function eixo(): BelongsTo
     {
         return $this->belongsTo(Eixo::class);
     }
 
-    public function modalidade()
+    public function modalidade(): BelongsTo
     {
         return $this->belongsTo(Modalidade::class);
     }
 
-    public function unidadeCurriculares()
-    {
-        return $this->belongsToMany(UnidadeCurricular::class, 'curso_unidade_curricular');
-    }
-
-    public function tipoAcao()
+    public function tipoAcao(): BelongsTo
     {
         return $this->belongsTo(TipoAcao::class);
+    }
+
+    // Curso possui várias Unidades Curriculares
+    public function unidadesCurriculares(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            UnidadeCurricular::class,
+            'curso_unidade_curricular'
+        )->withTimestamps();
     }
 }

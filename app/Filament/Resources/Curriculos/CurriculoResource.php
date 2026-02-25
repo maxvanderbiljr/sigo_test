@@ -15,14 +15,37 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class CurriculoResource extends Resource
 {
     protected static ?string $model = Curriculo::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    //Icone para o recurso, usando um ícone do Heroicons
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
 
-    protected static ?string $recordTitleAttribute = 'apresentacao';
+    //Título singular e plural para o recurso
+    protected static ?string $label = 'Currículo';
+
+    //Título plural para o recurso, usado em listagens e navegação
+    protected static ?string $pluralLabel = 'Currículos';
+
+    // Atributo usado para representar o título de um registro, aqui usamos o nome do usuário relacionado
+    protected static ?string $recordTitleAttribute = null;
+
+    // Breadcrumb personalizado para o recurso
+    protected static ?string $breadcrumb = 'Currículo';
+
+    public static function getRecordTitle(?Model $record): ?string
+    {
+        if (! $record) {
+            return null;
+        }
+
+        return $record->user?->name
+            ? "Currículo de {$record->user->name}"
+            : "Currículo #{$record->id}";
+    }
 
     public static function form(Schema $schema): Schema
     {

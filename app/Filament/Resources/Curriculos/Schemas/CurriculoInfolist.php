@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\Curriculos\Schemas;
 
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class CurriculoInfolist
 {
@@ -11,18 +13,51 @@ class CurriculoInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('apresentacao')
+                TextEntry::make('nome')
+                    ->label('Nome:'),
+
+                TextEntry::make('email')
+                    ->label('E-mail:'),
+
+                TextEntry::make('telefone')
+                    ->label('Telefone:'),
+
+                TextEntry::make('apresentacao') 
+                    ->label('Apresentação:')
                     ->columnSpanFull(),
+
+                TextEntry::make('formacao')
+                    ->label('Formação:')
+                    ->columnSpanFull(),
+
+                TextEntry::make('area_formacao')
+                    ->label('Área de Formação:')
+                    ->columnSpanFull(),
+
                 TextEntry::make('objetivo')
                     ->columnSpanFull(),
-                TextEntry::make('foto_perfil'),
+
+                ImageEntry::make('foto_perfil')
+                   ->label('Foto de Perfil:')
+                   ->disk('public')
+                   ->circular()
+                    ->columnSpanFull(),
+
+                TextEntry::make('lattes')
+                    ->label('Lattes:'),
+
                 TextEntry::make('linkedin'),
+
                 TextEntry::make('status'),
+
                 TextEntry::make('created_at')
-                    ->dateTime()
+                    ->label('Criado em:')
+                    ->formatStateUsing(fn ($state) => $state ? $state->locale('pt_BR')->translatedFormat('d/m/Y H:i') : '-')
                     ->placeholder('-'),
+
                 TextEntry::make('updated_at')
-                    ->dateTime()
+                    ->label('Atualizado em:')
+                    ->formatStateUsing(fn ($state) => $state ? $state->locale('pt_BR')->translatedFormat('d/m/Y H:i') : '-')
                     ->placeholder('-'),
             ]);
     }

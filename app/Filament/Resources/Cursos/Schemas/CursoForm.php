@@ -27,9 +27,9 @@ class CursoForm
                     ->label('Carga Horária')        
                     ->numeric(),
                 
-                Select::make('unidade_curricular_id')
-                    ->label('Unidade Curricular')   
-                    ->relationship('unidadeCurriculares', 'nome')
+                Select::make('unidadesCurriculares')
+                    ->label('Unidades Curriculares')   
+                    ->relationship('unidadesCurriculares', 'nome')
                     ->multiple()
                     ->preload()
                     ->searchable()

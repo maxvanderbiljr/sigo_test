@@ -10,6 +10,14 @@ class ViewCurriculo extends ViewRecord
 {
     protected static string $resource = CurriculoResource::class;
 
+    public function getBreadcrumbs(): array
+    {
+        return [
+            CurriculoResource::getUrl('index') => CurriculoResource::getBreadcrumb(),
+            $this->getBreadcrumb(),
+        ];
+    }
+
     protected function getHeaderActions(): array
     {
         return [

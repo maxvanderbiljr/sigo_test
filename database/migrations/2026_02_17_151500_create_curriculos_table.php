@@ -14,7 +14,8 @@ return new class extends Migration
        Schema::create('curriculos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('unidade_curricular_id')->constrained('unidade_curriculars')->onDelete('cascade');
+            //REMOVA esta linha:
+            // $table->foreignId('unidade_curricular_id')->constrained('unidade_curriculars')->onDelete('cascade');
             $table->string('foto_perfil', 255)->nullable();
             $table->string('formacao', 255)->nullable();
             $table->string('area_formacao', 255)->nullable();

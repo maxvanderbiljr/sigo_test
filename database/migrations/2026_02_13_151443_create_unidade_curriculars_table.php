@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('atitudes_valores')->nullable();
             $table->text('recursos_necessarios')->nullable();
             $table->text('bibliografia')->nullable();
-            $table->boolean('ativo')->default(true);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
