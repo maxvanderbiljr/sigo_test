@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('telefone', 20);
             $table->string('email', 200);
             $table->string('responsavel', 200);
-            $table->boolean('ativo')->default(true);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

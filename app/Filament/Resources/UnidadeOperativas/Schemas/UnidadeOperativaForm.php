@@ -35,7 +35,8 @@ class UnidadeOperativaForm
                     ->required(),
                 TextInput::make('responsavel')
                     ->required(),
-                Toggle::make('ativo')
+                Toggle::make('status')
+                    ->label('Status')
                     ->required(),
             ]);
     }

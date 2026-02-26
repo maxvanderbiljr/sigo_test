@@ -13,10 +13,10 @@ class CurriculoInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('nome')
-                    ->label('Nome:'),
+                TextEntry::make('user.name')
+                    ->label('Nome Completo:'),
 
-                TextEntry::make('email')
+                TextEntry::make('user.email')
                     ->label('E-mail:'),
 
                 TextEntry::make('telefone')
@@ -35,6 +35,7 @@ class CurriculoInfolist
                     ->columnSpanFull(),
 
                 TextEntry::make('objetivo')
+                    ->label('Objetivo:')
                     ->columnSpanFull(),
 
                 ImageEntry::make('foto_perfil')
@@ -46,9 +47,8 @@ class CurriculoInfolist
                 TextEntry::make('lattes')
                     ->label('Lattes:'),
 
-                TextEntry::make('linkedin'),
-
-                TextEntry::make('status'),
+                TextEntry::make('linkedin')
+                    ->label('LinkedIn:'),
 
                 TextEntry::make('created_at')
                     ->label('Criado em:')

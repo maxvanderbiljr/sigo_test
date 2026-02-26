@@ -49,7 +49,8 @@ class UsersTable
                         'orientador' => 'Orientador',
                         default => $state,
                     }),
-                IconColumn::make('ativo')
+                IconColumn::make('status')
+                    ->label('Status')
                     ->boolean(),
                 // IconColumn::make('primeiro_acesso')
                 //     ->boolean(),

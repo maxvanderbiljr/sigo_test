@@ -37,6 +37,7 @@ class CursoForm
                 
                 Select::make('segmento_id') 
                     ->label('Segmento')
+                    ->preload()
                     ->relationship(name:'segmento', titleAttribute:'nome')
                     ->searchable()
                     ->preload()
@@ -48,7 +49,8 @@ class CursoForm
                 ]),
 
                 Select::make('eixo_id')
-                    ->label('Eixo')     
+                    ->label('Eixo')
+                    ->preload()     
                     ->relationship(name:'eixo', titleAttribute:'nome')
                     ->searchable()
                     ->required()
@@ -59,7 +61,8 @@ class CursoForm
                 ]),
 
                 Select::make('modalidade_id')
-                    ->label('Modalidade')       
+                    ->label('Modalidade')
+                    ->preload()       
                     ->relationship(name:'modalidade', titleAttribute:'nome')
                     ->searchable()
                     ->required()
@@ -86,8 +89,8 @@ class CursoForm
                     ->default('basico')
                     ->required(),
                 
-                Toggle::make('ativo')
-                    ->label('Ativo')    
+                Toggle::make('status')
+                    ->label('Status')    
                     ->required(),
             ]);
     }

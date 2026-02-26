@@ -65,7 +65,7 @@ class CursoPolicy
         return $user->isAdmin();
     }
 
- /**
+    /**
      * Exclusão em massa de cursos
      */
     public function deleteAny(User $user): bool

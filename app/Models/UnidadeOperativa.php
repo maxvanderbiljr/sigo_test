@@ -18,7 +18,7 @@ class UnidadeOperativa extends Model
         'telefone',
         'email',
         'responsavel',
-        'ativo',
+        'status',
     ];
 
     // ==========================================

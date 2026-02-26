@@ -20,9 +20,23 @@ class CursoResource extends Resource
 {
     protected static ?string $model = Curso::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
+    
+    // Título singular para o recurso
+    protected static ?string $label = 'Curso';
+    
+    // Título plural para o recurso, usado em listagens e navegação
+    protected static ?string $pluralLabel = 'Cursos';
 
-    protected static ?string $recordTitleAttribute = 'nome';
+    //Título breadcrumb personalizado para o recurso
+    protected static ?string $breadcrumb = 'Curso';
+
+    // Atributo usado como título do registro
+    // protected static ?string $recordTitleAttribute = 'nome';
+    public static function getTitle(?Curso $record): ?string
+        {
+            return 'Curso';
+        }
 
     public static function form(Schema $schema): Schema
     {

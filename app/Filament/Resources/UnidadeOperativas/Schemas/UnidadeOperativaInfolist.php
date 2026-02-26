@@ -4,6 +4,7 @@ namespace App\Filament\Resources\UnidadeOperativas\Schemas;
 
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class UnidadeOperativaInfolist
@@ -12,25 +13,59 @@ class UnidadeOperativaInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('nome'),
-                TextEntry::make('sigla'),
-                TextEntry::make('cnpj'),
-                TextEntry::make('endereco'),
-                TextEntry::make('cidade'),
-                TextEntry::make('estado'),
-                TextEntry::make('cep'),
-                TextEntry::make('telefone'),
+
+            Section::make('Informações da Unidade Operativa')
+            ->schema([
+
+                TextEntry::make('nome')
+                    ->label('Nome da Unidade Operativa:'),
+                
+                TextEntry::make('sigla')
+                    ->label('Sigla'),
+                
+                TextEntry::make('cnpj')
+                    ->label('CNPJ'),
+                
+                TextEntry::make('telefone')
+                    ->label('Telefone'),
+
                 TextEntry::make('email')
-                    ->label('Email address'),
-                TextEntry::make('responsavel'),
-                IconEntry::make('ativo')
+                    ->label('E-mail'),
+                
+                TextEntry::make('responsavel')
+                    ->label('Responsável'),
+                
+                TextEntry::make('endereco')
+                    ->label('Endereço'),
+            ]),
+            
+            Section::make('Relações')
+            ->schema([
+
+                TextEntry::make('cidade')
+                    ->label('Cidade'),
+                
+                TextEntry::make('estado')
+                    ->label('Estado'),
+                
+                TextEntry::make('cep')
+                    ->label('CEP'),
+                
+                IconEntry::make('status')                  
+                    ->label('Status')
                     ->boolean(),
+                
                 TextEntry::make('created_at')
-                    ->dateTime()
+                    ->label('Criado em')
+                    ->dateTime('d/m/Y H:i')
                     ->placeholder('-'),
+                
                 TextEntry::make('updated_at')
-                    ->dateTime()
+                    ->label('Atualizado em')
+                    ->dateTime('d/m/Y H:i')
                     ->placeholder('-'),
+    
+            ]),
             ]);
     }
 }

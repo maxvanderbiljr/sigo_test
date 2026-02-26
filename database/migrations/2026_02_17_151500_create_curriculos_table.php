@@ -17,6 +17,7 @@ return new class extends Migration
             //REMOVA esta linha:
             // $table->foreignId('unidade_curricular_id')->constrained('unidade_curriculars')->onDelete('cascade');
             $table->string('foto_perfil', 255)->nullable();
+            $table->string('telefone', 20)->nullable();
             $table->string('formacao', 255)->nullable();
             $table->string('area_formacao', 255)->nullable();
             $table->string('lattes', 255)->nullable();

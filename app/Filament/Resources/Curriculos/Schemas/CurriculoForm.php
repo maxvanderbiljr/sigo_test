@@ -34,6 +34,11 @@ class CurriculoForm
                             ->directory('curriculos/fotos')
                             ->disk('public')
                             ->required(),
+                        
+                        TextInput::make('telefone')
+                            ->label('Telefone')
+                            ->mask('(00) 00000-0000')
+                            ->required(),
 
                         Textarea::make('apresentacao')
                             ->label('Apresentação')

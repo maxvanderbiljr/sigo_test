@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Cursos\Pages;
 use App\Filament\Resources\Cursos\CursoResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Support\Icons\Heroicon;
 
 class ListCursos extends ListRecords
 {
@@ -13,7 +14,11 @@ class ListCursos extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->label('Criar Curso')
+                ->icon(Heroicon::OutlinedPlus)
+                ->color('success')
+                ->button(),
         ];
     }
 }

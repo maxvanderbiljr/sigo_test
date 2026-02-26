@@ -22,7 +22,7 @@ class CurriculoResource extends Resource
     protected static ?string $model = Curriculo::class;
 
     //Icone para o recurso, usando um ícone do Heroicons
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
     //Título singular e plural para o recurso
     protected static ?string $label = 'Currículo';

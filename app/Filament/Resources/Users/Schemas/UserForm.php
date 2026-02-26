@@ -54,7 +54,8 @@ class UserForm
                     ])
                     ->required()
                     ->columns(1),
-                Toggle::make('ativo')
+                Toggle::make('status')
+                    ->label('Status')
                     ->required(),
                 // Toggle::make('primeiro_acesso')
                 //     ->required(),

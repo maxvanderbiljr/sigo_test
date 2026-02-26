@@ -20,9 +20,19 @@ class UnidadeOperativaResource extends Resource
 {
     protected static ?string $model = UnidadeOperativa::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPresentationChartBar;
 
-    protected static ?string $recordTitleAttribute = 'nome';
+    // Título singular para o recurso
+    protected static ?string $label = 'Unidade Operativa';
+
+    // Título plural para o recurso, usado em listagens e navegação
+    protected static ?string $pluralLabel = 'Unidades Operativas';
+
+    //breadcrumb personalizado para o recurso
+    public static function getTitle(?UnidadeOperativa $record): ?string
+    {
+        return 'Unidade Operativa';
+    }
 
     public static function form(Schema $schema): Schema
     {

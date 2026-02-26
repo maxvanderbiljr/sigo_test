@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->json('perfis')->nullable(); // admin, coordenador, orientador
-            $table->boolean('ativo')->default(true);
+            $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

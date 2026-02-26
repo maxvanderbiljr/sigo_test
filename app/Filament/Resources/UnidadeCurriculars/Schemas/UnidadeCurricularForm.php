@@ -48,7 +48,8 @@ class UnidadeCurricularForm
                     ->columnSpanFull(),
                 Textarea::make('bibliografia')
                     ->columnSpanFull(),
-                Toggle::make('ativo')
+                Toggle::make('status')
+                    ->label('Status')
                     ->required(),
             ]);
     }

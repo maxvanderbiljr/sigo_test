@@ -37,13 +37,16 @@ class UnidadeCurricularInfolist
                 TextEntry::make('bibliografia')
                     ->placeholder('-')
                     ->columnSpanFull(),
-                IconEntry::make('ativo')
+                IconEntry::make('status')
+                    ->label('Status')
                     ->boolean(),
                 TextEntry::make('created_at')
-                    ->dateTime()
+                    ->label('Criado em:')
+                    ->dateTime('d/m/Y H:i')
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
-                    ->dateTime()
+                    ->label('Atualizado em:')
+                    ->dateTime('d/m/Y H:i')
                     ->placeholder('-'),
             ]);
     }

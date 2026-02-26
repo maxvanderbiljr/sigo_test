@@ -20,9 +20,21 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
-    protected static ?string $recordTitleAttribute = 'name';
+    // protected static ?string $recordTitleAttribute = 'name';
+
+    // Título singular para o recurso
+    protected static ?string $label = 'Usuário';
+
+    // Título plural para o recurso, usado em listagens e navegação
+    protected static ?string $pluralLabel = 'Usuários';
+
+    //breadcrumb personalizado para o recurso
+    public static function getTitle(?User $record): ?string
+    {
+        return 'Usuário';
+    }
 
     public static function form(Schema $schema): Schema
     {

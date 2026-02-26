@@ -11,6 +11,7 @@ class Curriculo extends Model
     protected $fillable = [
         'user_id',
         'foto_perfil',
+        'telefone',
         'formacao',
         'area_formacao',
         'lattes',

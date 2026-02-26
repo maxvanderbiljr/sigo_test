@@ -26,7 +26,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'password',
         'perfis',
-        'ativo',
+        'status',
     ];
 
     /**
@@ -50,14 +50,14 @@ class User extends Authenticatable implements FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'perfis' => 'array',
-            'ativo' => 'boolean',
+            'status' => 'boolean',
         ];
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
         // Permite acesso ao painel apenas para usuários ativos com perfil 'admin' ou 'coordenador' ou 'orientador'
-        return $this->ativo && ($this->isAdmin() || $this->isCoordenador() || $this->isOrientador());
+        return $this->status && ($this->isAdmin() || $this->isCoordenador() || $this->isOrientador());
     }
 
 // User tem um Currículo (apenas orientadores terão)

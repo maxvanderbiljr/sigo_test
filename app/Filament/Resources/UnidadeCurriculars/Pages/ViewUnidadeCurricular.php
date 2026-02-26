@@ -5,6 +5,7 @@ namespace App\Filament\Resources\UnidadeCurriculars\Pages;
 use App\Filament\Resources\UnidadeCurriculars\UnidadeCurricularResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
+use Filament\Support\Icons\Heroicon;
 
 class ViewUnidadeCurricular extends ViewRecord
 {
@@ -13,7 +14,10 @@ class ViewUnidadeCurricular extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            EditAction::make(),
+            EditAction::make()
+                ->label('Editar Unidade Curricular')
+                ->icon(Heroicon::OutlinedPencil)
+                ->button(),
         ];
     }
 }

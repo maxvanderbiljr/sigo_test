@@ -13,8 +13,10 @@ class UserInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('name'),
-                TextEntry::make('email'),
+                TextEntry::make('name')
+                    ->label('Nome'),
+                TextEntry::make('email')
+                    ->label('E-mail'),
                 TextEntry::make('perfis')
                     ->badge()
                     ->formatStateUsing(fn (string $state): string => match ($state) {
@@ -23,15 +25,19 @@ class UserInfolist
                         'orientador' => 'Orientador',
                         default => $state,
                     }),
-                IconEntry::make('ativo')
+                IconEntry::make('status')
+                    ->label('Status')
                     ->boolean(),
                 TextEntry::make('created_at')
+                    ->label('Criado em')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
+                    ->label('Atualizado em')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('deleted_at')
+                    ->label('Excluído em')
                     ->dateTime()
                     ->placeholder('-')
                     ->visible(fn (User $record): bool => $record->trashed()),
